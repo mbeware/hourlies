@@ -5,7 +5,7 @@ A Windows application to log work done each hour throughout the day.
 """
 
 import platformdirs
-
+import pygetwindow as gw
 
 
 import tkinter as tk
@@ -97,6 +97,13 @@ class HourlyWorklogWindow:
         
     def show(self):
         """Show the hourly worklog window"""
+
+        # Get a list of all windows
+        windows = gw.getAllWindows()
+        # Minimize each window
+        for window in windows:
+            window.minimize()
+
         if self.window is not None and self.window.winfo_exists():
             self.window.lift()
             self.window.focus_force()
